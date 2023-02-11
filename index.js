@@ -8,16 +8,22 @@ const cookieParser = require('cookie-parser');
 const querystring = require('querystring');
 const cors = require('cors');
 
-const client_id = ''; // Your client id
-const client_secret = ''; // Your secret
-const redirect_uri = ''; // Your redirect uri
+const client_id = 'f31b167398674cc0927db70382e0e77f'; // Your client id
+const client_secret = '740d35ffede4430ab281ec0f83916e3d'; // Your secret
+const redirect_uri = 'http://localhost:3000/'; // Your redirect uri
 
 app.use(express.json());
 app.engine('handlebars', expbs.engine({
     defaultLayout: "main"
 }));
 app.set('view engine', 'handlebars');
-app.use(express.static('views'))
+// app.use(express.static('views'))
+
+var stateKey = 'spotify_auth_state';
+
+app.use(express.static(__dirname + '/public'))
+   .use(cors())
+   .use(cookieParser());
 
 /* **
  * Generates a random string containing numbers and letters
@@ -25,38 +31,32 @@ app.use(express.static('views'))
  * @return {string} The generated string
  */ 
 var generateRandomString = function(length) {
-  var text = '';
-  var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-
-  for (var i = 0; i < length; i++) {
-    text += possible.charAt(Math.floor(Math.random() * possible.length));
-  }
-  return text;
+    var text = '';
+    var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  
+    for (var i = 0; i < length; i++) {
+      text += possible.charAt(Math.floor(Math.random() * possible.length));
+    }
+    return text;
 };
 
-var stateKey = 'spotify_auth_state';
-
-
-app.use(express.static(__dirname + '/public'))
-   .use(cors())
-   .use(cookieParser());
-
+//routing
 app.get('/login', function(req, res) {
 
-  var state = generateRandomString(16);
-  res.cookie(stateKey, state);
-
-  // your application requests authorization
-  var scope = 'user-read-private user-read-email';
-  res.redirect('https://accounts.spotify.com/authorize?' +
-    querystring.stringify({
-      response_type: 'code',
-      client_id: client_id,
-      scope: scope,
-      redirect_uri: redirect_uri,
-      state: state
-    }));
-});
+    var state = generateRandomString(16);
+    res.cookie(stateKey, state);
+  
+    // your application requests authorization
+    var scope = 'user-read-private user-read-email user-top-read';
+    res.redirect('https://accounts.spotify.com/authorize?' +
+      querystring.stringify({
+        response_type: 'code',
+        client_id: client_id,
+        scope: scope,
+        redirect_uri: redirect_uri,
+        state: state
+      }));
+  });
 
 app.get('/callback', function(req, res) {
 
@@ -144,10 +144,21 @@ app.get('/refresh_token', function(req, res) {
   });
 });
 
-//routing
 app.get('/', (req, res) => {
-    res.render('index');
-})
+    res.render('index', { 
+        title: "Home", 
+        name: "Jason Zheng", 
+        details: [
+            {
+                genre: ["RnB", "Pop", "Rap"]
+            },
+            {
+                artists: ["joseph", "bryce", "jason"]
+            }
+        ],
+        isDisplayName: false
+    });
+});
 
 app.listen(port, ()=> {
     console.log(`Example app listening to port: ${port}`)
