@@ -4,6 +4,7 @@ const expbs = require('express-handlebars');
 const cookieParser = require('cookie-parser');
 const querystring = require('querystring');
 const cors = require('cors');
+const {spawn} = require('child_process');
 const port = 3000;
 
 var SpotifyWebApi = require('spotify-web-api-node');
@@ -69,11 +70,24 @@ app.get('/', (req, res) => {
   res.render('index');
 });
 
-app.get('/you', async(req, res) =>{
+app.get('/you', async(req, res) => {
   username = await getMe.getMyData(access_token);
   userTop = await getMe.getUserTop();
   topArtist = userTop.topArtists;
   topGenre = userTop.genresFreq;
+  var dataToSend;
+  //  PYTHON INJECTION
+  const python = spawn('python', ['main.py']);
+  // collect data from script
+  python.stdout.on('data', function (data) {
+    console.log('Pipe data from python script ...');
+    dataToSend = data.toString();
+  })
+  // in close event we are sure that stream from child process is closed
+  python.on('close', (code) => {
+  console.log(`child process close all stdio with code ${code}`);
+  })
+  
   res.render('you', { 
     title: "E-AI", 
     name: username, 
@@ -85,7 +99,7 @@ app.get('/you', async(req, res) =>{
             artists: topArtist
         }
     ],
-    isDisplayName: false
+    data: dataToSend
     });
 })
 

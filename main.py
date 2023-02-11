@@ -5,3 +5,6 @@ def main():
     output = recs_v1()
     return output
     
+
+if __name__ == "main":
+    main()
