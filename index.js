@@ -1,11 +1,13 @@
 const getMe = require('./getMe.js');
 const express = require('express');
 const expbs = require('express-handlebars');
-const port = 3000;
 const cookieParser = require('cookie-parser');
 const querystring = require('querystring');
 const cors = require('cors');
 //var python = require('python').shell;
+const {spawn} = require('child_process');
+const port = 3000;
+
 var SpotifyWebApi = require('spotify-web-api-node');
 
 const spotifyApi = new SpotifyWebApi({
@@ -59,8 +61,6 @@ app.get('/login', (req, res) => {
 
 app.get('/', (req, res) => {
   const error = req.query.error;
-  // const code = req.query.code;
-  // const state = req.query.state;
 
   if (error) {
     console.error('Callback Error:', error);
@@ -84,13 +84,27 @@ app.get('/you', async(req, res) =>{
   // process.stdin.on('data', function(chunk) {
   //   python(chunk, mycallback)
   // })
+  
+app.get('/you', async(req, res) => {
   username = await getMe.getMyData(access_token);
   userTop = await getMe.getUserTop();
   topArtist = userTop.topArtists;
   topGenre = userTop.genresFreq;
+
   images = userTop.images;
-  console.log(images);
-  console.log("^^^^");
+  var dataToSend;
+  //  PYTHON INJECTION
+  const python = spawn('python', ['main.py']);
+  // collect data from script
+  python.stdout.on('data', function (data) {
+    console.log('Pipe data from python script ...');
+    dataToSend = data.toString();
+  })
+  // in close event we are sure that stream from child process is closed
+  python.on('close', (code) => {
+  console.log(`child process close all stdio with code ${code}`);
+  })
+  
   res.render('you', { 
     title: "E-AI", 
     name: username, 
@@ -106,7 +120,7 @@ app.get('/you', async(req, res) =>{
         }
         
     ],
-    isDisplayName: false
+    data: dataToSend
     });
 })
 
@@ -137,8 +151,6 @@ app.get('/callback', (req, res) => {
       console.log(
         `Sucessfully retreived access token. Expires in ${expires_in} s.`
       );
-      // user = getMe.getMyData(access_token);
-      // topArtists = getMe.getUserTop();
       res.redirect('/you');
       console.log("success");
       

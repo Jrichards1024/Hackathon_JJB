@@ -9,7 +9,6 @@ async function getMyData(token){
     const me = await spotifyApi.getMe();
     return me.body.id;
 }
-//getMyData()
 
 async function getUserTop(){
     const data = await spotifyApi.getMyTopArtists();
@@ -28,13 +27,11 @@ async function getUserTop(){
         }
     }
     
-
     var genresFreq = topGenre(data.body.items);
     return { topArtists, genresFreq, images};
-    
-    ///console.log(genresFreq)
+
+    return { topArtists, genresFreq };
 }
-//getUserTop()
 
 function topGenre(items) {
     let frequency = {};
@@ -59,26 +56,6 @@ function topGenre(items) {
 
     return freqArr.slice(0,5);
 }
-
-async function getSongs(){
-   // const data = await spotifyApi.getMyTopTracks();
-    //console.log(Object.keys(data.body.items[0]));
-    //console.log(data.body.items[0].id)
-    // var id = data.body.items[0].id
-    // const data1 = await spotifyApi.getTrack(id)
-    // console.log(Object.keys(data1.body));
-    const data2 = await spotifyApi.get
-    console.log(Object.keys(data2.body));
-    //console.log(data.body)
-}
-//getSongs()
-
-// async function getSongs(){
-//     const data = await spotifyApi.getArtistTopTracks('Mariah the '
-//     )
-//     console.log(data.body)
-// }
-// getSongs()
 
 exports.getMyData = getMyData;
 exports.getUserTop = getUserTop;
