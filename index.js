@@ -1,4 +1,4 @@
-import "./getMe.js";
+const getMe = require('./getMe.js');
 const express = require('express');
 const expbs = require('express-handlebars');
 const port = 3000;
@@ -46,17 +46,11 @@ app.set('view engine', 'handlebars');
 // app.use(express.static('views'))
 
 var stateKey = 'spotify_auth_state';
+var access_token;
 
 app.use(express.static(__dirname + '/public'))
    .use(cors())
    .use(cookieParser());
-
-/* **
- * Generates a random string containing numbers and letters
- * @param  {number} length The length of the string
- * @return {string} The generated string
- */ 
-
 
 //<---------------------------- ROUTING ---------------------------->
 app.get('/login', (req, res) => {
@@ -73,24 +67,29 @@ app.get('/', (req, res) => {
     res.send(`Callback Error: ${error}`);
     return;
   }
-  getMyData(access_token);
   
-  res.render('index', { 
-  title: "Home", 
-  name: "Jason Zheng", 
-  details: [
-      {
-          genre: ["RnB", "Pop", "Rap"]
-      },
-      {
-          artists: ["joseph", "bryce", "jason"]
-      }
-  ],
-  isDisplayName: false
-  });
+  res.render('index');
 });
 
-
+app.get('/you', async(req, res) =>{
+  username = await getMe.getMyData(access_token);
+  userTop = await getMe.getUserTop();
+  topArtist = userTop.topArtists;
+  topGenre = userTop.genresFreq;
+  res.render('you', { 
+    title: "E-AI", 
+    name: username, 
+    details: [
+        {
+            genre: topGenre
+        },
+        {
+            artists: topArtist
+        }
+    ],
+    isDisplayName: false
+    });
+})
 
 app.get('/callback', (req, res) => {
   const error = req.query.error;
@@ -106,7 +105,7 @@ app.get('/callback', (req, res) => {
   spotifyApi
     .authorizationCodeGrant(code)
     .then(data => {
-      const access_token = data.body['access_token'];
+      access_token = data.body['access_token'];
       const refresh_token = data.body['refresh_token'];
       const expires_in = data.body['expires_in'];
 
@@ -119,8 +118,11 @@ app.get('/callback', (req, res) => {
       console.log(
         `Sucessfully retreived access token. Expires in ${expires_in} s.`
       );
-      res.redirect('/');
+      // user = getMe.getMyData(access_token);
+      // topArtists = getMe.getUserTop();
+      res.redirect('/you');
       console.log("success");
+      
 
       setInterval(async () => {
         const data = await spotifyApi.refreshAccessToken();
@@ -162,7 +164,7 @@ app.get('/refresh_token', function(req, res) {
     spotifyApi
       .authorizationCodeGrant(code)
       .then(data => {
-        const access_token = data.body['access_token'];
+        access_token = data.body['access_token'];
         const refresh_token = data.body['refresh_token'];
         const expires_in = data.body['expires_in'];
   

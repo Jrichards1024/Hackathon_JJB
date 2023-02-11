@@ -4,23 +4,17 @@ const SpotifyWebApi = require('spotify-web-api-node');
 const spotifyApi = new SpotifyWebApi();
 // spotifyApi.setAccessToken(token);
 
-function getMyData(token){
+async function getMyData(token){
     spotifyApi.setAccessToken(token);
-    (async()=>{
-        const me = await spotifyApi.getMe();
-        console.log(me.body);
-        //getUserPlaylist(me.body.id);
-    })().catch(e=>{
-        console.error(e);
-    })
-    }
+    const me = await spotifyApi.getMe();
+    return me.body.id;
+}
 //getMyData()
 
 async function getUserTop(){
     const data = await spotifyApi.getMyTopArtists();
-    console.log(data.body.items[0].name)
-    console.log("________________________")
     let topArtists = [];
+    
     for(let i = 0; i < data.body.items.length; i++) {
         if(i < 5) {
             topArtists.push(data.body.items[i].name);
@@ -29,15 +23,13 @@ async function getUserTop(){
             break;
         }
     }
-    console.log(topArtists);
-    console.log("^^^^^^^^");
-
 
     var genresFreq = topGenre(data.body.items);
+    return { topArtists, genresFreq };
     
     ///console.log(genresFreq)
 }
-getUserTop()
+//getUserTop()
 
 function topGenre(items) {
     let frequency = {};
@@ -83,4 +75,5 @@ async function getSongs(){
 // }
 // getSongs()
 
-export { getMyData }
+exports.getMyData = getMyData;
+exports.getUserTop = getUserTop;
