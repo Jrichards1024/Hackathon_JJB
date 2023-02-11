@@ -1,10 +1,10 @@
 const getMe = require('./getMe.js');
 const express = require('express');
 const expbs = require('express-handlebars');
-const port = 3000;
 const cookieParser = require('cookie-parser');
 const querystring = require('querystring');
 const cors = require('cors');
+const port = 3000;
 
 var SpotifyWebApi = require('spotify-web-api-node');
 
@@ -59,8 +59,6 @@ app.get('/login', (req, res) => {
 
 app.get('/', (req, res) => {
   const error = req.query.error;
-  // const code = req.query.code;
-  // const state = req.query.state;
 
   if (error) {
     console.error('Callback Error:', error);
@@ -118,8 +116,6 @@ app.get('/callback', (req, res) => {
       console.log(
         `Sucessfully retreived access token. Expires in ${expires_in} s.`
       );
-      // user = getMe.getMyData(access_token);
-      // topArtists = getMe.getUserTop();
       res.redirect('/you');
       console.log("success");
       
