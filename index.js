@@ -1,9 +1,13 @@
 const express = require('express');
 const expbs = require('express-handlebars');
 const port = 3000;
-var cookieParser = require('cookie-parser');
-var querystring = require('querystring');
-var cors = require('cors');
+const cookieParser = require('cookie-parser');
+const querystring = require('querystring');
+const cors = require('cors');
+
+const client_id = ''; // Your client id
+const client_secret = ''; // Your secret
+const redirect_uri = 'http://localhost:3000/'; // Your redirect uri
 var SpotifyWebApi = require('spotify-web-api-node');
 
 const scopes = [
@@ -34,32 +38,7 @@ const spotifyApi = new SpotifyWebApi({
     redirectUri:'' // Your redirect uri
   });
   
-  const app = express();
-  
-  app.get('/login', (req, res) => {
-    res.redirect(spotifyApi.createAuthorizeURL(scopes));
-  });
-  
-  app.get('/', (req, res) => {
-    const error = req.query.error;
-    const code = req.query.code;
-    const state = req.query.state;
-  
-    if (error) {
-      console.error('Callback Error:', error);
-      res.send(`Callback Error: ${error}`);
-      return;
-   }
-
 const app = express();
-
-const cookieParser = require('cookie-parser');
-const querystring = require('querystring');
-const cors = require('cors');
-
-const client_id = ''; // Your client id
-const client_secret = ''; // Your secret
-const redirect_uri = 'http://localhost:3000/'; // Your redirect uri
 
 app.use(express.json());
 app.engine('handlebars', expbs.engine({
@@ -89,7 +68,37 @@ var generateRandomString = function(length) {
     return text;
 };
 
-//routing
+//<---------------------------- ROUTING ---------------------------->
+app.get('/login', (req, res) => {
+  res.redirect(spotifyApi.createAuthorizeURL(scopes));
+});
+
+app.get('/', (req, res) => {
+  const error = req.query.error;
+  const code = req.query.code;
+  const state = req.query.state;
+
+  if (error) {
+    console.error('Callback Error:', error);
+    res.send(`Callback Error: ${error}`);
+    return;
+  }
+
+  res.render('index', { 
+  title: "Home", 
+  name: "Jason Zheng", 
+  details: [
+      {
+          genre: ["RnB", "Pop", "Rap"]
+      },
+      {
+          artists: ["joseph", "bryce", "jason"]
+      }
+  ],
+  isDisplayName: false
+  });
+});
+
 app.get('/login', function(req, res) {
 
     var state = generateRandomString(16);
@@ -226,22 +235,6 @@ app.get('/refresh_token', function(req, res) {
   
 });
 
-app.get('/', (req, res) => {
-    res.render('index', { 
-        title: "Home", 
-        name: "Jason Zheng", 
-        details: [
-            {
-                genre: ["RnB", "Pop", "Rap"]
-            },
-            {
-                artists: ["joseph", "bryce", "jason"]
-            }
-        ],
-        isDisplayName: false
-    });
-});
-
 app.listen(port, ()=> {
     console.log(`Example app listening to port: ${port}`)
-})
+});
