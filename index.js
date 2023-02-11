@@ -1,15 +1,23 @@
 const express = require('express');
+const expbs = require('express-handlebars');
 const port = 3000;
-const app = express();
-var cookieParser = require('cookie-parser');
-var querystring = require('querystring');
-var cors = require('cors');
 
-var client_id = ''; // Your client id
-var client_secret = ''; // Your secret
-var redirect_uri = ''; // Your redirect uri
+const app = express();
+
+const cookieParser = require('cookie-parser');
+const querystring = require('querystring');
+const cors = require('cors');
+
+const client_id = ''; // Your client id
+const client_secret = ''; // Your secret
+const redirect_uri = ''; // Your redirect uri
 
 app.use(express.json());
+app.engine('handlebars', expbs.engine({
+    defaultLayout: "main"
+}));
+app.set('view engine', 'handlebars');
+app.use(express.static('views'))
 
 /* **
  * Generates a random string containing numbers and letters
@@ -136,8 +144,9 @@ app.get('/refresh_token', function(req, res) {
   });
 });
 
+//routing
 app.get('/', (req, res) => {
-    res.json({test: 'ok'});
+    res.render('index');
 })
 
 app.listen(port, ()=> {
