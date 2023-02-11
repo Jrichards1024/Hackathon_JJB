@@ -71,7 +71,7 @@ def recs_v1():
                 for each_artist in genres[genre][1]:
                     score += proportion*ratings[each_artist]
         final_preds_dict[score]= artist
-    print(final_preds_dict)
+    # print(final_preds_dict)
 
     new_preds_json = json.dumps(final_preds_dict)
     return new_preds_json
