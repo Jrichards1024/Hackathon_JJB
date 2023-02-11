@@ -5,7 +5,7 @@ const port = 3000;
 const cookieParser = require('cookie-parser');
 const querystring = require('querystring');
 const cors = require('cors');
-
+//var python = require('python').shell;
 var SpotifyWebApi = require('spotify-web-api-node');
 
 const spotifyApi = new SpotifyWebApi({
@@ -72,10 +72,25 @@ app.get('/', (req, res) => {
 });
 
 app.get('/you', async(req, res) =>{
+  //   var mycallback = function(err, data) {
+  //   if(err) {
+  //     console.error(err);
+  //   } else {
+  //     console.log("callback function got:", data);
+  //   }
+  // }
+  // process.stdin.resume();
+  // process.stdin.setEncoding('utf8');
+  // process.stdin.on('data', function(chunk) {
+  //   python(chunk, mycallback)
+  // })
   username = await getMe.getMyData(access_token);
   userTop = await getMe.getUserTop();
   topArtist = userTop.topArtists;
   topGenre = userTop.genresFreq;
+  images = userTop.images;
+  console.log(images);
+  console.log("^^^^");
   res.render('you', { 
     title: "E-AI", 
     name: username, 
@@ -85,7 +100,11 @@ app.get('/you', async(req, res) =>{
         },
         {
             artists: topArtist
+        },
+        {
+          image: images
         }
+        
     ],
     isDisplayName: false
     });

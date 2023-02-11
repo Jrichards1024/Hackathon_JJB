@@ -1,11 +1,19 @@
 <H1>Hi {{ name }}</H1>
 
 <h3>Here are your top Artists</h3>
+<div>
 {{#each details}}
     {{#each this.artists}}
-        <p>{{ this }}</p>
+        <p>{{this}}</p>
     {{/each}}
 {{/each}}
+
+{{#each details}}
+    {{#each this.image}}
+        <img src = {{{this}}} alt = "artist image" height = "100" width = "100" >
+    {{/each}}
+{{/each}}
+</div>
 
 <h3>Here are your top Genres</h3>
     {{#each details}}

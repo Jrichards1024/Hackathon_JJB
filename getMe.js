@@ -13,19 +13,24 @@ async function getMyData(token){
 
 async function getUserTop(){
     const data = await spotifyApi.getMyTopArtists();
+    console.log(data.body.items[0].images[0])
     let topArtists = [];
+    let images = [];
+    
     
     for(let i = 0; i < data.body.items.length; i++) {
         if(i < 5) {
-            topArtists.push(data.body.items[i].name);
+            topArtists.push(topArtists.push(data.body.items[i].name));
+            images.push(images.push(data.body.items[i].images[0].url));
         }
         else{
             break;
         }
     }
+    
 
     var genresFreq = topGenre(data.body.items);
-    return { topArtists, genresFreq };
+    return { topArtists, genresFreq, images};
     
     ///console.log(genresFreq)
 }
