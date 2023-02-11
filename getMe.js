@@ -1,11 +1,11 @@
 const fs = require('fs')
 const SpotifyWebApi = require('spotify-web-api-node');
-const token = ""
-
+// const token = ""
 const spotifyApi = new SpotifyWebApi();
-spotifyApi.setAccessToken(token);
+// spotifyApi.setAccessToken(token);
 
-function getMyData(){
+function getMyData(token){
+    spotifyApi.setAccessToken(token);
     (async()=>{
         const me = await spotifyApi.getMe();
         console.log(me.body);
@@ -82,3 +82,5 @@ async function getSongs(){
 //     console.log(data.body)
 // }
 // getSongs()
+
+export { getMyData }
