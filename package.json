@@ -23,6 +23,7 @@
     "express-handlebars": "^6.0.7",
     "handlebars": "^4.7.7",
     "nodemon": "^2.0.20",
-    "querystring": "^0.2.1"
+    "querystring": "^0.2.1",
+    "spotify-web-api-node": "^5.0.2"
   }
 }
