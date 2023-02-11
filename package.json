@@ -1,0 +1,30 @@
+{
+  "name": "hackathon_jjb",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jrichards1024/Hackathon_JJB.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jrichards1024/Hackathon_JJB/issues"
+  },
+  "homepage": "https://github.com/Jrichards1024/Hackathon_JJB#readme",
+  "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "express-handlebars": "^6.0.7",
+    "handlebars": "^4.7.7",
+    "json": "^11.0.0",
+    "nodemon": "^2.0.20",
+    "querystring": "^0.2.1",
+    "spotify-web-api-node": "^5.0.2"
+  }
+}

@@ -1,0 +1,22 @@
+<H1>Hi {{ name }}</H1>
+
+<h3>Here are your top Artists</h3>
+{{#each details}}
+    {{#each this.artists}}
+        <p>{{ this }}</p>
+    {{/each}}
+{{/each}}
+
+<h3>Here are your top Genres</h3>
+    {{#each details}}
+        {{#each this.genre}}
+            {{!-- {{#each this}}
+                <p>{{ this.[0] }}</p>
+            {{/each}} --}}
+            <p>{{ this.[0] }}</p>
+        {{/each}}
+    {{/each}}
+
+
+<h3>Python</h3>
+{{ data }}
