@@ -4,6 +4,7 @@ const expbs = require('express-handlebars');
 const cookieParser = require('cookie-parser');
 const querystring = require('querystring');
 const cors = require('cors');
+//var python = require('python').shell;
 const {spawn} = require('child_process');
 const port = 3000;
 
@@ -70,11 +71,27 @@ app.get('/', (req, res) => {
   res.render('index');
 });
 
+app.get('/you', async(req, res) =>{
+  //   var mycallback = function(err, data) {
+  //   if(err) {
+  //     console.error(err);
+  //   } else {
+  //     console.log("callback function got:", data);
+  //   }
+  // }
+  // process.stdin.resume();
+  // process.stdin.setEncoding('utf8');
+  // process.stdin.on('data', function(chunk) {
+  //   python(chunk, mycallback)
+  // })
+  
 app.get('/you', async(req, res) => {
   username = await getMe.getMyData(access_token);
   userTop = await getMe.getUserTop();
   topArtist = userTop.topArtists;
   topGenre = userTop.genresFreq;
+
+  images = userTop.images;
   var dataToSend;
   //  PYTHON INJECTION
   const python = spawn('python', ['main.py']);
@@ -97,7 +114,11 @@ app.get('/you', async(req, res) => {
         },
         {
             artists: topArtist
+        },
+        {
+          image: images
         }
+        
     ],
     data: dataToSend
     });

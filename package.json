@@ -24,6 +24,7 @@
     "handlebars": "^4.7.7",
     "json": "^11.0.0",
     "nodemon": "^2.0.20",
+    "python": "^0.0.4",
     "querystring": "^0.2.1",
     "spotify-web-api-node": "^5.0.2"
   }
