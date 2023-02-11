@@ -1,26 +1,43 @@
-<H1>Hi {{ name }}</H1>
+<div class="container-fluid">
+    <div style=".name_header">
+        <h1>Hi {{ name }}</h1>
+    </div>
 
-<h3>Here are your top Artists</h3>
+
+    <h3>Here are your top Artists</h3>
+    <div>
+
+        {{#each details}}
+        <div class="row">
+            {{#each this.artists}}
+            <div class="col-2">
+                {{this}}
+            </div>
+        </div>
+    </div>
+    {{/each}}
+
+
+    {{/each}}
+</div>
 <div>
-{{#each details}}
-    {{#each this.artists}}
-        <p>{{this}}</p>
-    {{/each}}
-{{/each}}
-
-{{#each details}}
+    {{#each details}}
     {{#each this.image}}
-        <img src = {{{this}}} alt = "artist image" height = "100" width = "100" >
+    <img src={{{this}}} alt="artist image" height="100" width="100">
     {{/each}}
-{{/each}}
+    {{/each}}
+    {{data}}
+</div>
 </div>
 
 <h3>Here are your top Genres</h3>
-    {{#each details}}
-        {{#each this.genre}}
-            {{!-- {{#each this}}
-                <p>{{ this.[0] }}</p>
-            {{/each}} --}}
-            <p>{{ this.[0] }}</p>
-        {{/each}}
-    {{/each}}
+{{#each details}}
+{{#each this.genre}}
+{{!-- {{#each this}}
+<p>{{ this.[0] }}</p>
+{{/each}} --}}
+<p>{{ this.[0] }}</p>
+{{/each}}
+{{/each}}
+
+</div>

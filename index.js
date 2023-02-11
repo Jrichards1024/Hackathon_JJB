@@ -6,6 +6,7 @@ const cookieParser = require('cookie-parser');
 const querystring = require('querystring');
 const cors = require('cors');
 //var python = require('python').shell;
+const {spawn} = require('child_process');
 var SpotifyWebApi = require('spotify-web-api-node');
 
 const spotifyApi = new SpotifyWebApi({
@@ -72,6 +73,28 @@ app.get('/', (req, res) => {
 });
 
 app.get('/you', async(req, res) =>{
+  var process = spawn('python3',["./main.py"]);
+  
+    // Takes stdout data from script which executed
+    // with arguments and send this data to res object
+    process.stdout.on('data', function(data) {
+        res.send(data.toString());
+        console.log(data.toString())
+    } )
+  // var dataToSend
+  // const python = spawn('python3', ['./main.py']);
+  // console.log(python);
+  // console.log("^^^^^^^^");
+  // python.stdout.on("data", (data)=>{
+  //   console.log('hi');
+  //   dataToSend = data.toString();
+  //   console.log(dataToSend);
+  // })
+  // // python.on("close",(code)=>{
+  // //   console.log(code);
+  // //   res.send(dataToSend);
+
+  // // })
   //   var mycallback = function(err, data) {
   //   if(err) {
   //     console.error(err);
@@ -106,7 +129,8 @@ app.get('/you', async(req, res) =>{
         }
         
     ],
-    isDisplayName: false
+    style: 'you.css'
+    //data: dataToSend
     });
 })
 
