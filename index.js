@@ -71,20 +71,6 @@ app.get('/', (req, res) => {
   res.render('index');
 });
 
-app.get('/you', async(req, res) =>{
-  //   var mycallback = function(err, data) {
-  //   if(err) {
-  //     console.error(err);
-  //   } else {
-  //     console.log("callback function got:", data);
-  //   }
-  // }
-  // process.stdin.resume();
-  // process.stdin.setEncoding('utf8');
-  // process.stdin.on('data', function(chunk) {
-  //   python(chunk, mycallback)
-  // })
-  
 app.get('/you', async(req, res) => {
   username = await getMe.getMyData(access_token);
   userTop = await getMe.getUserTop();

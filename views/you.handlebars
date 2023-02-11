@@ -10,7 +10,7 @@
 
 {{#each details}}
     {{#each this.image}}
-        <img src = {{{this}}} alt = "artist image" height = "100" width = "100" >
+        <img src = {{this}} alt = "artist image" height = "100" width = "100" >
     {{/each}}
 {{/each}}
 </div>
@@ -18,9 +18,6 @@
 <h3>Here are your top Genres</h3>
     {{#each details}}
         {{#each this.genre}}
-            {{!-- {{#each this}}
-                <p>{{ this.[0] }}</p>
-            {{/each}} --}}
             <p>{{ this.[0] }}</p>
         {{/each}}
     {{/each}}
