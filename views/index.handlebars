@@ -1,21 +1,24 @@
-<!DOCTYPE html>
-<html>
-  <head>
-  <style type="text/css">
-  #login {
-    display: none;
-  }
-
-  #loggedin {
-    display: none;
-  }
-</style>
-<body>
+ {{> header}}
+ 
  <div>
-    <div id="login">
-     <h1>First, log in to spotify</h1>
-     <a href="/login">Log in</a>
-    </div>
+    {{#if isDisplayName}}
+        {{ name }}
+        {{ else }}
+        <div id="login">
+            <h1>First, log in to spotify</h1>
+            <a href="/login">Log in</a>
+        </div>
+    {{/if}}
+
+    {{#each details}}
+        {{#each this.genre}}
+            <p>{{ this }}</p>
+        {{/each}}
+        {{#each this.artists}}
+            <p>{{ this }}</p>
+        {{/each}}
+    {{/each}}
+
     <div id="loggedin">
     </div>
  </div>
@@ -33,5 +36,3 @@
     </dl>
     <p><a href="/">Log in again</a></p>
  </script>
-</body>
-</html>
