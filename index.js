@@ -1,12 +1,12 @@
 const getMe = require('./getMe.js');
 const express = require('express');
 const expbs = require('express-handlebars');
-const port = 3000;
 const cookieParser = require('cookie-parser');
 const querystring = require('querystring');
 const cors = require('cors');
 //var python = require('python').shell;
 const {spawn} = require('child_process');
+const port = 3000;
 var SpotifyWebApi = require('spotify-web-api-node');
 
 const spotifyApi = new SpotifyWebApi({
@@ -103,10 +103,12 @@ app.get('/you', async(req, res) =>{
   
   console.log("here", recs)
 
+app.get('/you', async(req, res) => {
   username = await getMe.getMyData(access_token);
   userTop = await getMe.getUserTop();
   topArtist = userTop.topArtists;
   topGenre = userTop.genresFreq;
+
   images = userTop.images;
   //reformatting for display 
   let artistInfo = {}
@@ -114,8 +116,19 @@ app.get('/you', async(req, res) =>{
     artistInfo[i+1] = ({'image': images[i], 'artist': topArtist[i]});
   }
 
-  console.log(artistInfo);
-  console.log("^^^^");
+  var dataToSend;
+  //  PYTHON INJECTION
+  const python = spawn('python', ['main.py']);
+  // collect data from script
+  python.stdout.on('data', function (data) {
+    console.log('Pipe data from python script ...');
+    dataToSend = data.toString();
+  })
+  // in close event we are sure that stream from child process is closed
+  python.on('close', (code) => {
+  console.log(`child process close all stdio with code ${code}`);
+  })
+  
   res.render('you', { 
     title: "E-AI", 
     name: username, 
