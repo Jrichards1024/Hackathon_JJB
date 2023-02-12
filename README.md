@@ -1,12 +1,9 @@
-# Hackathon_JJB
+# EAI
 
 ## Contributors
 - Bryce Anthony
 - Joseph Richards
 - Jason Zheng
-
-
-**Project Name: EAI**
 
 The goal of the project is to support emerging artists is crucial for the growth and diversity of the music world.
     Emerging artists are often at the beginning of their careers and may lack the financial stability,
