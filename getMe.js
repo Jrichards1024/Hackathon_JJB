@@ -18,15 +18,14 @@ async function getUserTop(){
     
     
     for(let i = 0; i < data.body.items.length; i++) {
-        if(i < 5) {
-            topArtists.push(topArtists.push(data.body.items[i].name));
-            images.push(images.push(data.body.items[i].images[0].url));
+        if(i < 6) {
+            topArtists.push(data.body.items[i].name);
+            images.push(data.body.items[i].images[0].url);
         }
         else{
             break;
         }
     }
-    
     var genresFreq = topGenre(data.body.items);
     return { topArtists, genresFreq, images};
 
@@ -54,7 +53,7 @@ function topGenre(items) {
         return second[1] - first[1];
     })
 
-    return freqArr.slice(0,5);
+    return freqArr.slice(0,8);
 }
 
 exports.getMyData = getMyData;

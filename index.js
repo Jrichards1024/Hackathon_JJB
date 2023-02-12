@@ -7,7 +7,6 @@ const cors = require('cors');
 //var python = require('python').shell;
 const {spawn} = require('child_process');
 const port = 3000;
-
 var SpotifyWebApi = require('spotify-web-api-node');
 
 const spotifyApi = new SpotifyWebApi({
@@ -59,6 +58,24 @@ app.get('/login', (req, res) => {
   res.redirect(spotifyApi.createAuthorizeURL(scopes));
 });
 
+app.get('/about', (req, res) => {
+  res.render('about', {
+    style: "index.css"
+  });
+})
+
+app.get('/about', (req, res) => {
+  res.render('about', {
+    style: "index.css"
+  });
+})
+
+app.get('/suggestion', (req, res) => {
+  res.render('suggestion', {
+    style: "you.css"
+  });
+})
+
 app.get('/', (req, res) => {
   const error = req.query.error;
 
@@ -68,8 +85,23 @@ app.get('/', (req, res) => {
     return;
   }
   
-  res.render('index');
+  res.render('index', {
+    style: "index.css"
+  });
 });
+
+var recs;
+app.get('/you', async(req, res) =>{
+  var process = spawn('python3',["./main.py"]);
+  
+    // Takes stdout data from script which executed
+    // with arguments and send this data to res object
+    process.stdout.on('data', function(data) {
+        // res.send(data.toString());
+        recs = data.toString();
+    } )
+  
+  console.log("here", recs)
 
 app.get('/you', async(req, res) => {
   username = await getMe.getMyData(access_token);
@@ -78,6 +110,12 @@ app.get('/you', async(req, res) => {
   topGenre = userTop.genresFreq;
 
   images = userTop.images;
+  //reformatting for display 
+  let artistInfo = {}
+  for(let i = 0; i < topArtist.length; i++) {
+    artistInfo[i+1] = ({'image': images[i], 'artist': topArtist[i]});
+  }
+
   var dataToSend;
   //  PYTHON INJECTION
   const python = spawn('python', ['main.py']);
@@ -99,14 +137,11 @@ app.get('/you', async(req, res) => {
             genre: topGenre
         },
         {
-            artists: topArtist
-        },
-        {
-          image: images
+            artistInfo: artistInfo
         }
-        
     ],
-    data: dataToSend
+    style: 'you.css'
+    //data: dataToSend
     });
 })
 

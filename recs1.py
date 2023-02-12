@@ -52,6 +52,7 @@ def recs_v1():
         for artist in similar_artists["artists"]:
             if (artist["popularity"]<50) and (artist["popularity"]>25) and len(ea_dict)<50:
                 #may be better for retrieving from api to send artist id 
+                ea_dict[artist["id"]] = artist["genres"]
                 ea_dict[artist["name"]] = artist["genres"]
             
     # print(genres, total_genres)

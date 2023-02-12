@@ -1,0 +1,93 @@
+body {
+    background-color:rgb(191, 219, 56);
+}
+
+.name{
+    position: relative;
+    top: 25px;
+    font-size: 60px;
+    font-weight: bold;
+}
+
+.category {
+    align-items: center;
+    padding-left: 10%;
+}
+
+.individual {
+    padding: 1em;
+}
+
+.order {
+    font-size: 25px;
+    font-weight: bold;
+    padding-right: 10px;
+}
+
+.artist-image{
+    background-image: linear-gradient(white,rgb(191, 219, 56));
+    width: 30%;
+    height: 100%;
+    padding: 2;
+}
+
+.artist-name {
+    padding-left: 10px;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.intro {
+    font-size: 40px;
+    left: 40%;
+}
+
+#buffer {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.explore {
+    padding: 10px;
+    position: fixed;
+}
+
+.explore-btn {
+    position: fixed;
+    border-radius: 4px;
+    border: none;
+    text-align: center;
+    font-size: 25px;
+    width: 300px;
+    transition: all 0.5s;
+    /* cursor: pointer; */
+    margin: 5px;
+    margin-bottom: 5vh;
+    left: 40%;
+    bottom: 0;
+  }
+  
+  .explore-btn span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+  
+  .explore-btn span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+  
+  .explore-btn:hover span {
+    padding-right: 25px;
+  }
+  
+  .explore-btn:hover span:after {
+    opacity: 1;
+    right: 0;
+  }

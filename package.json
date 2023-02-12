@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Jrichards1024/Hackathon_JJB#readme",
   "dependencies": {
+    "bootstrap": "^5.3.0-alpha1",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "express": "^4.18.2",
@@ -25,6 +26,7 @@
     "json": "^11.0.0",
     "nodemon": "^2.0.20",
     "python": "^0.0.4",
+    "python-shell": "^5.0.0",
     "querystring": "^0.2.1",
     "spotify-web-api-node": "^5.0.2"
   }

@@ -1,16 +1,25 @@
- {{> header}}
- 
- <div>
-    <div id="login">
-        <h1>First, log in to spotify</h1>
-        <a href="/login">Log in</a>
+<div class="container-fluid data-interval = 2000">
+    <div class="hero">
+        <div>
+            <h1 class="text-center text-uppercase font-weight-bold">Welcome to E-AI</h1>
+            <h3 class="text-center">Discover the future of music: Find emerging artists today!</h3>
+        </div>
+
+        <div class="text-center">
+            <button type="button" class="text-center btn btn-success btn-lg">
+                {{!-- get rid of login highlight --}}
+                <div id="login">
+                    <a class="action" href="/login">Log in</a>
+                </div>
+            </button>
+        </div>
     </div>
 
     <div id="loggedin">
     </div>
- </div>
+</div>
 
- <script id="loggedin-template" type="text/x-handlebars-template">
+<script id="loggedin-template" type="text/x-handlebars-template">
     <h1>Logged in as </h1>
     <img id="avatar" width="200" src="" />
     <dl>
