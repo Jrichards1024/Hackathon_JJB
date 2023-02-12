@@ -135,11 +135,11 @@ app.get('/you', async (req, res) => {
   });
   console.log(suggestionArr);
 
-  images = userTop.images;
+  // images = userTop.images;
   //reformatting for display 
-  let artistInfo = {}
+  let artistI = {}
   for(let i = 0; i < topArtist.length; i++) {
-    artistInfo[i+1] = ({'image': images[i], 'artist': topArtist[i]});
+    artistI[i+1] = ({'image': images[i], 'artist': topArtist[i]});
   }
   
   res.render('you', { 
@@ -150,7 +150,7 @@ app.get('/you', async (req, res) => {
             genre: topGenre
         },
         {
-            artistInfo: artistInfo
+            artistInfo: artistI
         }
     ],
     style: 'you.css',

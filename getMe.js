@@ -28,8 +28,6 @@ async function getUserTop(){
     }
     var genresFreq = topGenre(data.body.items);
     return { topArtists, genresFreq, images};
-
-    return { topArtists, genresFreq };
 }
 
 function topGenre(items) {
