@@ -1,43 +1,55 @@
 <div class="container-fluid">
     <div style=".name_header">
-        <h1>Hi {{ name }}</h1>
+        <h1 class="text-center" style="margin-bottom:10vh; margin-top:4vh">Hi {{ name }}</h1>
     </div>
 
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <h3 class="text-center">Here are your top Artists</h3>
 
-    <h3>Here are your top Artists</h3>
-    <div>
+                <div class="row">
+                    {{#each details}}
 
-        {{#each details}}
-        <div class="row">
-            {{#each this.artists}}
-            <div class="col-2">
-                {{this}}
+                    {{#each this.artists}}
+                    <div class="col-4">
+                        {{this}}
+                    </div>
+                    {{/each}}
+                    {{/each}}
+                </div>
+
+                <div class="row">
+                    {{#each details}}
+                    {{#each this.image}}
+                    <div class="col-4">
+                        <img src={{{this}}} alt="artist image" height="max" width="200">
+                    </div>
+                    {{/each}}
+                    {{/each}}
+                    {{data}}
+                </div>
+            </div>
+            <div class="carousel-item">
+                <h3 class="text-center">Here are your top Genres</h3>
+                <div class="">
+                    {{#each details}}
+                    {{#each this.genre}}
+                    <div class="col">
+                        <p>{{ this.[0] }}</p>
+                    </div>
+                    {{/each}}
+                    {{/each}}
+                </div>
             </div>
         </div>
     </div>
-    {{/each}}
 
 
-    {{/each}}
-</div>
-<div>
-    {{#each details}}
-    {{#each this.image}}
-    <img src={{{this}}} alt="artist image" height="100" width="100">
-    {{/each}}
-    {{/each}}
-    {{data}}
+
+
+
+
 </div>
 </div>
-
-<h3>Here are your top Genres</h3>
-{{#each details}}
-{{#each this.genre}}
-{{!-- {{#each this}}
-<p>{{ this.[0] }}</p>
-{{/each}} --}}
-<p>{{ this.[0] }}</p>
-{{/each}}
-{{/each}}
-
 </div>

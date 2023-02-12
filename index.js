@@ -72,46 +72,34 @@ app.get('/', (req, res) => {
   res.render('index');
 });
 
+var recs;
 app.get('/you', async(req, res) =>{
   var process = spawn('python3',["./main.py"]);
   
     // Takes stdout data from script which executed
     // with arguments and send this data to res object
     process.stdout.on('data', function(data) {
-        res.send(data.toString());
-        console.log(data.toString())
+        // res.send(data.toString());
+        recs = data.toString();
     } )
-  // var dataToSend
-  // const python = spawn('python3', ['./main.py']);
-  // console.log(python);
-  // console.log("^^^^^^^^");
-  // python.stdout.on("data", (data)=>{
-  //   console.log('hi');
-  //   dataToSend = data.toString();
-  //   console.log(dataToSend);
-  // })
-  // // python.on("close",(code)=>{
-  // //   console.log(code);
-  // //   res.send(dataToSend);
+  
+  console.log("here", recs)
 
-  // // })
-  //   var mycallback = function(err, data) {
-  //   if(err) {
-  //     console.error(err);
-  //   } else {
-  //     console.log("callback function got:", data);
-  //   }
-  // }
-  // process.stdin.resume();
-  // process.stdin.setEncoding('utf8');
-  // process.stdin.on('data', function(chunk) {
-  //   python(chunk, mycallback)
-  // })
   username = await getMe.getMyData(access_token);
   userTop = await getMe.getUserTop();
   topArtist = userTop.topArtists;
   topGenre = userTop.genresFreq;
   images = userTop.images;
+  // reformatting for display 
+  // let art_img = []
+  // // for(let i = 0; i < topArtist.length; i++) {
+  // //   console.log(topArtist[i],images[i]);
+  // // }
+
+
+
+
+  
   console.log(images);
   console.log("^^^^");
   res.render('you', { 
