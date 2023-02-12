@@ -1,0 +1,15 @@
+<div class="recommendations">
+    <h3 class="intro text-center">Here who we think you might like!</h3>
+    <div class="artist-info row">
+        {{#each details}}
+        {{#each this.suggestion }}
+        <div class="individual offset col-4">
+            <span class="order">{{@key}}.</span>
+            <img class="artist-image" src={{ this.image }} alt="artist image" height="max" width="200">
+            <span class="artist-name">{{ this.artist }}</span>
+        </div>
+        {{/each}}
+        {{/each}}
+
+    </div>
+</div>
