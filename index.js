@@ -5,7 +5,7 @@ const cookieParser = require('cookie-parser');
 const querystring = require('querystring');
 const cors = require('cors');
 //var python = require('python').shell;
-const {spawn} = require('child_process');
+// const {spawn} = require('child_process');
 const port = 3000;
 var SpotifyWebApi = require('spotify-web-api-node');
 
@@ -64,12 +64,6 @@ app.get('/about', (req, res) => {
   });
 })
 
-app.get('/about', (req, res) => {
-  res.render('about', {
-    style: "index.css"
-  });
-})
-
 app.get('/suggestion', (req, res) => {
   res.render('suggestion', {
     style: "you.css"
@@ -90,11 +84,56 @@ app.get('/', (req, res) => {
   });
 });
 
-app.get('/you', async(req, res) => {
+var recs;
+app.get('/you', async (req, res) => {
+  
   username = await getMe.getMyData(access_token);
   userTop = await getMe.getUserTop();
-  topArtist = userTop.topArtists;
-  topGenre = userTop.genresFreq;
+  topArtist = await userTop.topArtists;
+  topGenre = await userTop.genresFreq;
+  images = await userTop.images;
+  topSongs = await userTop.topSongs;
+  artistRelated = await userTop.artistRelated;
+  artistInfo = await userTop.artistInfo;
+  dataString = '';
+  const spawn = require('child_process').spawn;
+  // artistinfor = top artist 
+  // top songs is top songs 
+  // artists related is elated artists
+  var dataSet;
+  var suggestionArr;
+  const py = spawn('python3',['./main.py']);
+  py.stdin.write(JSON.stringify(artistInfo)+ "\n");
+  py.stdin.write(JSON.stringify(topSongs)+ "\n");
+  py.stdin.write(JSON.stringify(artistRelated)+ "\n");
+  py.stdin.end()
+
+  py.stdout.on('data', (data)=> {
+    console.log("1", data.toString());
+    dataSet = JSON.parse(data.toString());
+    console.log(dataSet);
+    console.log("HIIIIIIIII");
+    suggestionArr = Object.keys(dataSet).map(function(key) {
+      return [dataSet[key], parseInt(key)]
+    });
+    suggestionArr.sort(function(first, second) {
+      return second[1] - first[1];
+  })
+  console.log(suggestionArr)
+  console.log("----------------------------")
+  });
+  py.stderr.on('data', (data)=> {
+    console.log("2",data.toString());
+    console.log("----------------------------")
+  });
+  py.on('error', (error)=> {
+    console.error(error);
+  });
+  py.on('close', (code)=> {
+    console.log("4",'ext code', code);
+    console.log("----------------------------")
+  });
+  console.log(suggestionArr);
 
   images = userTop.images;
   //reformatting for display 
@@ -102,19 +141,6 @@ app.get('/you', async(req, res) => {
   for(let i = 0; i < topArtist.length; i++) {
     artistInfo[i+1] = ({'image': images[i], 'artist': topArtist[i]});
   }
-
-  // var dataToSend;
-  // //  PYTHON INJECTION
-  // const python = spawn('python', ['main.py']);
-  // // collect data from script
-  // python.stdout.on('data', function (data) {
-  //   console.log('Pipe data from python script ...');
-  //   dataToSend = data.toString();
-  // })
-  // // in close event we are sure that stream from child process is closed
-  // python.on('close', (code) => {
-  // console.log(`child process close all stdio with code ${code}`);
-  // })
   
   res.render('you', { 
     title: "E-AI", 
@@ -127,8 +153,8 @@ app.get('/you', async(req, res) => {
             artistInfo: artistInfo
         }
     ],
-    style: 'you.css'
-    //data: dataToSend
+    style: 'you.css',
+    data: suggestionArr
     });
 })
 
