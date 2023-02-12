@@ -90,19 +90,6 @@ app.get('/', (req, res) => {
   });
 });
 
-var recs;
-app.get('/you', async(req, res) =>{
-  var process = spawn('python3',["./main.py"]);
-  
-    // Takes stdout data from script which executed
-    // with arguments and send this data to res object
-    process.stdout.on('data', function(data) {
-        // res.send(data.toString());
-        recs = data.toString();
-    } )
-  
-  console.log("here", recs)
-
 app.get('/you', async(req, res) => {
   username = await getMe.getMyData(access_token);
   userTop = await getMe.getUserTop();
@@ -116,18 +103,18 @@ app.get('/you', async(req, res) => {
     artistInfo[i+1] = ({'image': images[i], 'artist': topArtist[i]});
   }
 
-  var dataToSend;
-  //  PYTHON INJECTION
-  const python = spawn('python', ['main.py']);
-  // collect data from script
-  python.stdout.on('data', function (data) {
-    console.log('Pipe data from python script ...');
-    dataToSend = data.toString();
-  })
-  // in close event we are sure that stream from child process is closed
-  python.on('close', (code) => {
-  console.log(`child process close all stdio with code ${code}`);
-  })
+  // var dataToSend;
+  // //  PYTHON INJECTION
+  // const python = spawn('python', ['main.py']);
+  // // collect data from script
+  // python.stdout.on('data', function (data) {
+  //   console.log('Pipe data from python script ...');
+  //   dataToSend = data.toString();
+  // })
+  // // in close event we are sure that stream from child process is closed
+  // python.on('close', (code) => {
+  // console.log(`child process close all stdio with code ${code}`);
+  // })
   
   res.render('you', { 
     title: "E-AI", 
