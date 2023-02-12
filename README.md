@@ -1,4 +1,4 @@
-# EAI
+# E-AI
 
 ## Contributors
 - Bryce Anthony
