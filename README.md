@@ -1,6 +1,6 @@
 # Hackathon_JJB
 
-##Project Name: EAI
+## Project Name: EAI
 
 ## Creators
 - Bryce Anthony
