@@ -1,42 +1,39 @@
 <div class="container-fluid">
     <div style=".name_header">
-        <h1 class="text-center" style="margin-bottom:10vh; margin-top:4vh">Hi {{ name }}</h1>
+        <h1 class="name text-center" style="margin-bottom:10vh; margin-top:4vh">Hi {{ name }}!</h1>
     </div>
 
-    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+    <div class="row">
+        <div id="buffer" class="offset-5">
+            Here's what we found...
+        </div>
+    </div>
+
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel" data-interval="4000">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <h3 class="text-center">Here are your top Artists</h3>
-
-                <div class="row">
-                    {{#each details}}
-
-                    {{#each this.artists}}
-                    <div class="col-4">
-                        {{this}}
+                <div class="artists">
+                    <h3 class="intro text-center">Based on your top Artists</h3>
+                    <div class="artist-info row">
+                        {{#each details}}
+                        {{#each this.artistInfo }}
+                        <div class="individual offset col-4">
+                            <span class="order">{{@key}}.</span>
+                            <img class="artist-image" src={{ this.image }} alt="artist image" height="max" width="200">
+                            <span class="artist-name">{{ this.artist }}</span>
+                        </div>
+                        {{/each}}
+                        {{/each}}
                     </div>
-                    {{/each}}
-                    {{/each}}
-                </div>
-
-                <div class="row">
-                    {{#each details}}
-                    {{#each this.image}}
-                    <div class="col-4">
-                        <img src={{{this}}} alt="artist image" height="max" width="200">
-                    </div>
-                    {{/each}}
-                    {{/each}}
-                    {{data}}
                 </div>
             </div>
             <div class="carousel-item">
-                <h3 class="text-center">Here are your top Genres</h3>
-                <div class="">
+                <h3 class="intro text-center">Based on your top Genres</h3>
+                <div class="genres row">
                     {{#each details}}
                     {{#each this.genre}}
-                    <div class="col">
-                        <p>{{ this.[0] }}</p>
+                    <div class="category">
+                        <h2><span class="badge badge-dark"> {{this.[0]}} </span></h2>
                     </div>
                     {{/each}}
                     {{/each}}
@@ -44,12 +41,27 @@
             </div>
         </div>
     </div>
-
-
-
-
-
-
+    <div class="explore row">
+        <a class="explore-btn btn btn-dark offset-5" href="/suggestion" role="button"><span id="explore">Loading Artists...</span></a>
+    </div>
 </div>
-</div>
-</div>
+
+<script type="text/javascript">
+    buffer = document.getElementById('buffer');
+    carasel = document.getElementById('carouselExampleSlidesOnly');
+    buttonText = document.getElementById('explore');
+    button = document.getElementsByTagName("a");
+    button.pointerEvents = "none";
+    carasel.style.display = 'none';
+
+    setTimeout(function() {
+        console.log("waiting");
+        buffer.style.display = 'none';
+        carasel.style.display = 'block';
+   }, 2500);
+
+    setInterval(function() {
+        buttonText.textContent = "Explore Up and Coming Artists!"
+        button.pointerEvents = "";
+    }, 6000);
+</script>

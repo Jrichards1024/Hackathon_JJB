@@ -19,7 +19,7 @@ async function getUserTop(){
     
     
     for(let i = 0; i < data.body.items.length; i++) {
-        if(i < 5) {
+        if(i < 6) {
             topArtists.push(data.body.items[i].name);
             images.push(data.body.items[i].images[0].url);
         }
@@ -56,7 +56,7 @@ function topGenre(items) {
         return second[1] - first[1];
     })
 
-    return freqArr.slice(0,5);
+    return freqArr.slice(0,8);
 }
 
 async function getSongs(){

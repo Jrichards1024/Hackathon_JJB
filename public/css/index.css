@@ -1,0 +1,36 @@
+body {
+    background-color:rgb(191, 219, 56);
+}
+
+h2 {
+    color: red;
+}
+
+a, a:hover, a:link{
+    color: inherit;
+    text-decoration: none;
+}
+
+.action {
+    font-size: 25px;
+}
+
+.hero {
+    position: absolute;
+    width: 100%;
+    height: 300px;
+    top: 35%;
+    font-size: 60px;
+}
+h1 {
+    font-size: 100px;
+}
+.about{
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+navbar-brand, navbar-link {
+    font-size: 25px;
+    left:50%
+}

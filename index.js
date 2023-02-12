@@ -58,10 +58,26 @@ app.get('/login', (req, res) => {
   res.redirect(spotifyApi.createAuthorizeURL(scopes));
 });
 
+app.get('/about', (req, res) => {
+  res.render('about', {
+    style: "index.css"
+  });
+})
+
+app.get('/about', (req, res) => {
+  res.render('about', {
+    style: "index.css"
+  });
+})
+
+app.get('/suggestion', (req, res) => {
+  res.render('suggestion', {
+    style: "you.css"
+  });
+})
+
 app.get('/', (req, res) => {
   const error = req.query.error;
-  // const code = req.query.code;
-  // const state = req.query.state;
 
   if (error) {
     console.error('Callback Error:', error);
@@ -69,7 +85,9 @@ app.get('/', (req, res) => {
     return;
   }
   
-  res.render('index');
+  res.render('index', {
+    style: "index.css"
+  });
 });
 
 var recs;
@@ -90,17 +108,13 @@ app.get('/you', async(req, res) =>{
   topArtist = userTop.topArtists;
   topGenre = userTop.genresFreq;
   images = userTop.images;
-  // reformatting for display 
-  // let art_img = []
-  // // for(let i = 0; i < topArtist.length; i++) {
-  // //   console.log(topArtist[i],images[i]);
-  // // }
+  //reformatting for display 
+  let artistInfo = {}
+  for(let i = 0; i < topArtist.length; i++) {
+    artistInfo[i+1] = ({'image': images[i], 'artist': topArtist[i]});
+  }
 
-
-
-
-  
-  console.log(images);
+  console.log(artistInfo);
   console.log("^^^^");
   res.render('you', { 
     title: "E-AI", 
@@ -110,12 +124,8 @@ app.get('/you', async(req, res) =>{
             genre: topGenre
         },
         {
-            artists: topArtist
-        },
-        {
-          image: images
+            artistInfo: artistInfo
         }
-        
     ],
     style: 'you.css'
     //data: dataToSend
@@ -149,8 +159,6 @@ app.get('/callback', (req, res) => {
       console.log(
         `Sucessfully retreived access token. Expires in ${expires_in} s.`
       );
-      // user = getMe.getMyData(access_token);
-      // topArtists = getMe.getUserTop();
       res.redirect('/you');
       console.log("success");
       
