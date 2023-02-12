@@ -2,9 +2,9 @@ from recs1 import recs_v1
 import json 
 
 def main():
+    print("here")
     output = recs_v1()
-    print(output)
     return output
     
-if __name__ == "main":
+if __name__ == "__main__":
     main()

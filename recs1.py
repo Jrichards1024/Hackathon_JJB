@@ -2,6 +2,7 @@ import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 import cred 
 import json 
+import sys
 
 """
 TF-IDF reccommendation alg using users top artists/genres and the genres of emerging artists. 
@@ -11,13 +12,14 @@ we deifned emerging artists at those with a spotify-defined popularity score of 
 """
 
 def recs_v1():
+    top_artists, top_tracks, similar_artists = sys.argv[1], sys.argv[2], sys.argv[3]
     #get top artists 
-    scope = "user-top-read"
-    sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=cred.client_ID, client_secret= cred.client_SECRET, redirect_uri=cred.redirect_url, scope=scope))
-    top_artists = sp.current_user_top_artists(time_range="long_term")
+    # scope = "user-top-read"
+    # sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=cred.client_ID, client_secret= cred.client_SECRET, redirect_uri=cred.redirect_url, scope=scope))
+    # top_artists = sp.current_user_top_artists(time_range="long_term")
 
     #get top tracks
-    top_tracks = sp.current_user_top_tracks(time_range="long_term")
+    # top_tracks = sp.current_user_top_tracks(time_range="long_term")
 
 
     #used to make ratings of artists assigning an aritficial score between 5 and 2 based on rank in top tracks 
@@ -47,12 +49,14 @@ def recs_v1():
             else:
                 genres[genre]= (1, [this_artist["name"]])
                 total_genres+=1
-        similar_artists = sp.artist_related_artists(artist_id=this_artist["id"])
+                
+                
+    # similar_artists = sp.artist_related_artists(artist_id=this_artist["id"])
         
-        for artist in similar_artists["artists"]:
-            if (artist["popularity"]<50) and (artist["popularity"]>25) and len(ea_dict)<50:
-                #may be better for retrieving from api to send artist id 
-                ea_dict[artist["name"]] = artist["genres"]
+    for artist in similar_artists["artists"]:
+        if (artist["popularity"]<50) and (artist["popularity"]>25) and len(ea_dict)<50:
+            #may be better for retrieving from api to send artist id 
+            ea_dict[artist["name"]] = artist["genres"]
             
     # print(genres, total_genres)
     # generate recs for new stuff - TFIDF 
