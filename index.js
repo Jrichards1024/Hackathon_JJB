@@ -218,7 +218,28 @@ app.get('/', (req, res) => {
 
 var recs;
 app.get('/you', async (req, res) => {
-
+  const spawn = require('child_process').spawn;
+  const py = spawn('python3', ['./rec_api.py']);
+  await py.stdout.on('data', (data) => {
+    const stdout = data.toString();
+    console.log = function(d) {
+      log_file.write(util.format(d) + '\n');
+      log_stdout.write(util.format(d) + '\n');
+    }
+  });
+  py.stderr.on('data', (data) => {
+    console.log("2", data.toString());
+    console.log("----------------------------")
+    return res.status(500).send(data.toString());
+  });
+  py.on('error', (error) => {
+    console.error(error);
+  });
+  py.on('close', (code) => {
+    // console.log("4", 'ext code', code);
+    // console.log("----------------------------")
+    dataSet = ({ dataString, code });
+  });
   username = await getMe.getMyData(access_token);
   userTop = await getMe.getUserTop();
   topArtist = await userTop.topArtists;
