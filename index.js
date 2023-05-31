@@ -240,14 +240,14 @@ app.get('/you', async (req, res) => {
     // console.log("----------------------------")
     dataSet = ({ dataString, code });
   });
-  username = await getMe.getMyData(access_token);
-  userTop = await getMe.getUserTop();
-  topArtist = await userTop.topArtists;
-  topGenre = await userTop.genresFreq;
-  images = await userTop.images;
-  topSongs = await userTop.topSongs;
-  artistRelated = await userTop.artistRelated;
-  artistInfo = await userTop.artistInfo;
+  // username = await getMe.getMyData(access_token);
+  // userTop = await getMe.getUserTop();
+  // topArtist = await userTop.topArtists;
+  // topGenre = await userTop.genresFreq;
+  // images = await userTop.images;
+  // topSongs = await userTop.topSongs;
+  // artistRelated = await userTop.artistRelated;
+  // artistInfo = await userTop.artistInfo;
   // console.log(artistInfo);
   // console.log("-----")
   // console.log(artistRelated);
