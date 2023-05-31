@@ -3,10 +3,14 @@ import json, time
 import json 
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
+import os
 
-client_ID="f31b167398674cc0927db70382e0e77f"
-client_SECRET= "740d35ffede4430ab281ec0f83916e3d"
+# client_ID="f31b167398674cc0927db70382e0e77f"
+# client_SECRET= "740d35ffede4430ab281ec0f83916e3d"
+client_ID="75b707d2ec804db8a3e4de1a59080bce"
+client_SECRET= "e8031c36f2a744aea3e3edebfa602ac0"
 redirect_url= "http://localhost:3000/callback"
+SSK = os.urandom(12)
 
 scopes = 'user-top-read'
 # [
@@ -31,7 +35,7 @@ scopes = 'user-top-read'
 #   'user-follow-modify'
 # ]
 app = Flask(__name__)
-
+app.secret_key = SSK
 API_BASE = 'https://accounts.spotify.com'
 
 @app.route('/', methods = ['GET'])
@@ -54,7 +58,7 @@ def verify():
     
 #     return json_dump 
 
-@app.route("/api_callback/", methods = ['GET'])
+@app.route("/callback/", methods = ['GET'])
 def api_callback():
     # Don't reuse a SpotifyOAuth object because they store token info and you could leak user tokens if you reuse a SpotifyOAuth object
     sp_oauth = spotipy.oauth2.SpotifyOAuth(client_id = client_ID, client_secret = client_SECRET, redirect_uri = "http://localhost:3000/callback", scope = scopes)
@@ -126,9 +130,9 @@ def recommendation_page():
                 #may be better for retrieving from api to send artist id 
                 ea_dict[artist["name"]] = artist["genres"]
         print(ea_dict)
-        json_dump = json.dumps(ea_dict)
+        # json_dump = json.dumps(ea_dict)
         
-        return json_dump 
+        # return json_dump 
     # Checks to see if token is valid and gets a new token if not
 def get_token(session):
     token_valid = False

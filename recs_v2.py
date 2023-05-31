@@ -17,11 +17,11 @@ num_items = 50
 #get top artists 
 scope = "user-top-read" #authorization scope 
 sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=cred.client_ID, client_secret= cred.client_SECRET, redirect_uri=cred.redirect_url, scope=scope))
-top_artists = sp.current_user_top_artists(limit = 50, time_range=term_len)
+top_artists = sp.current_user_top_artists(limit= 50, time_range=term_len)
 #get top tracks
 top_tracks = sp.current_user_top_tracks(limit= 50, time_range=term_len)
 
-sp.current_user_top_tracks()
+
 #used to make ratings of artists assigning an aritficial score between 5 and 2 based on rank in top tracks 
 num_artists = len(top_tracks['items'])
 increment = 4/num_artists
