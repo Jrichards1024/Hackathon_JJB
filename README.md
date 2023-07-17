@@ -16,4 +16,4 @@ The goal of the project is to support emerging artists is crucial for the growth
     being nurtured and encouraged.
 
 
-works with api specified in  [https://github.com/bryce-ka/spotify-flask-master.git](this) repo. run both on seperate local hosts.
+works with api specified in  this => [https://github.com/bryce-ka/spotify-flask-master.git] repo. run both on seperate local hosts.
