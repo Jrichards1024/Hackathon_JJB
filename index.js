@@ -8,16 +8,19 @@ const util = require('util');
 const fs = require('fs')
 var log_file = fs.createWriteStream(__dirname + '/debug.log', {flags : 'w'});
 var log_stdout = process.stdout;
-
+var access_token = ""
 //var python = require('python').shell;
 // const {spawn} = require('child_process');
-const port = 3000;
+const port = 4000;
 var SpotifyWebApi = require('spotify-web-api-node');
 
 const spotifyApi = new SpotifyWebApi({
-  clientId: 'f31b167398674cc0927db70382e0e77f', // Your client id
-  clientSecret: '740d35ffede4430ab281ec0f83916e3d', // Your secret
-  redirectUri: 'http://localhost:3000/callback' // Your redirect uri
+  // clientId: 'f31b167398674cc0927db70382e0e77f', // Your client id
+  // clientSecret: '740d35ffede4430ab281ec0f83916e3d', // Your secret
+
+  clientId: '75b707d2ec804db8a3e4de1a59080bce', // Your client id
+  clientSecret: 'e8031c36f2a744aea3e3edebfa602ac0', // Your secre
+  redirectUri: 'http://localhost:4000/callback' // Your redirect uri
 });
 
 const scopes = [
@@ -216,30 +219,9 @@ app.get('/', (req, res) => {
   });
 });
 
-var recs;
 app.get('/you', async (req, res) => {
-  const spawn = require('child_process').spawn;
-  const py = spawn('python3', ['./rec_api.py']);
-  await py.stdout.on('data', (data) => {
-    const stdout = data.toString();
-    console.log = function(d) {
-      log_file.write(util.format(d) + '\n');
-      log_stdout.write(util.format(d) + '\n');
-    }
-  });
-  py.stderr.on('data', (data) => {
-    console.log("2", data.toString());
-    console.log("----------------------------")
-    return res.status(500).send(data.toString());
-  });
-  py.on('error', (error) => {
-    console.error(error);
-  });
-  py.on('close', (code) => {
-    // console.log("4", 'ext code', code);
-    // console.log("----------------------------")
-    dataSet = ({ dataString, code });
-  });
+  const https = require('https');
+
   // username = await getMe.getMyData(access_token);
   // userTop = await getMe.getUserTop();
   // topArtist = await userTop.topArtists;
@@ -255,24 +237,34 @@ app.get('/you', async (req, res) => {
   // console.log(topSongs);
 
   //reformatting for display 
-  let artistI = {}
-  for (let i = 0; i < topArtist.length; i++) {
-    artistI[i + 1] = ({ 'image': images[i], 'artist': topArtist[i] });
-  }
+  // let artistI = {}
+  // for (let i = 0; i < topArtist.length; i++) {
+  //   artistI[i + 1] = ({ 'image': images[i], 'artist': topArtist[i] });
+  // }
 
-  res.render('you', {
-    title: "E-AI",
-    name: username,
-    details: [
-      {
-        genre: topGenre
-      },
-      {
-        artistInfo: artistI
-      }
-    ],
-    style: 'you.css'
-  });
+  // res.render('you', {
+  //   title: "E-AI",
+  //   name: username,
+  //   details: [
+  //     {
+  //       genre: topGenre
+  //     },
+  //     {
+  //       artistInfo: artistI
+  //     }
+  //   ],
+  //   style: 'you.css'
+  // });
+})
+
+app.get('/recommendations',  async (req, res) => {
+  
+    const recs = 'http://127.0.0.1:5000/recs?token=' + access_token; //add acces token as ?= thing 
+    console.log(recs)
+    const response = await fetch(recs);
+    const json = await response.json();
+    console.log(json)
+
 })
 
 app.get('/callback', (req, res) => {
@@ -308,7 +300,7 @@ app.get('/callback', (req, res) => {
 
       setInterval(async () => {
         const data = await spotifyApi.refreshAccessToken();
-        const access_token = data.body['access_token'];
+        access_token = data.body['access_token'];
 
         console.log('The access token has been refreshed!');
         console.log('access_token:', access_token);
