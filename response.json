@@ -1,0 +1,519 @@
+{
+  "recommendations": {
+    "25": {
+      "confidence": "Low",
+      "genres": ["underground hip hop"],
+      "id": "0B1prtAE9Ca9hTs0rUkjHG",
+      "link": "spotify:artist:0B1prtAE9Ca9hTs0rUkjHG",
+      "name": "MellowHigh",
+      "popularity": 25
+    },
+    "26": {
+      "confidence": "Low",
+      "genres": [],
+      "id": "1E6I6xhlNmVIgnDGkikmj5",
+      "link": "spotify:artist:1E6I6xhlNmVIgnDGkikmj5",
+      "name": "Aint Afraid",
+      "popularity": 26
+    },
+    "30": {
+      "confidence": "Low",
+      "genres": ["escape room", "hyperpop", "pink noise", "proto-hyperpop"],
+      "id": "3FPflECmvkrze212dLPRSC",
+      "link": "spotify:artist:3FPflECmvkrze212dLPRSC",
+      "name": "GFOTY",
+      "popularity": 30
+    },
+    "31": {
+      "confidence": "Low",
+      "genres": ["hollywood"],
+      "id": "75caxjvX9NfZ9yZk5HbqEp",
+      "link": "spotify:artist:75caxjvX9NfZ9yZk5HbqEp",
+      "name": "Brittany Snow",
+      "popularity": 31
+    },
+    "32": {
+      "confidence": "Low",
+      "genres": ["hyperpop"],
+      "id": "0aoBUiGI5wrK7DOWJAzAKe",
+      "link": "spotify:artist:0aoBUiGI5wrK7DOWJAzAKe",
+      "name": "Planet 1999",
+      "popularity": 32
+    },
+    "33": {
+      "confidence": "Low",
+      "genres": ["indie r&b"],
+      "id": "37AvA9c8rndxYbojqst9At",
+      "link": "spotify:artist:37AvA9c8rndxYbojqst9At",
+      "name": "Sun",
+      "popularity": 33
+    },
+    "34": {
+      "confidence": "Low",
+      "genres": ["underground hip hop"],
+      "id": "5CCrgHVEWtg8YTEn1UaYug",
+      "link": "spotify:artist:5CCrgHVEWtg8YTEn1UaYug",
+      "name": "MellowHype",
+      "popularity": 34
+    },
+    "35": {
+      "confidence": "Low",
+      "genres": ["houston rap", "trap queen"],
+      "id": "3ej8SuMJzEgwFLe2lCBikV",
+      "link": "spotify:artist:3ej8SuMJzEgwFLe2lCBikV",
+      "name": "Lebra Jolie",
+      "popularity": 35
+    },
+    "36": {
+      "confidence": "Low",
+      "genres": ["trap queen"],
+      "id": "3wFzTRAvCLEACzbRmgBEHx",
+      "link": "spotify:artist:3wFzTRAvCLEACzbRmgBEHx",
+      "name": "Omeretta the Great",
+      "popularity": 36
+    },
+    "37": {
+      "confidence": "Low",
+      "genres": ["escape room", "hyperpop", "proto-hyperpop"],
+      "id": "3sXErEOw7EmO6Sj7EgjHdU",
+      "link": "spotify:artist:3sXErEOw7EmO6Sj7EgjHdU",
+      "name": "Hannah Diamond",
+      "popularity": 37
+    },
+    "38": {
+      "confidence": "Low",
+      "genres": ["trap queen"],
+      "id": "6LIcR4928YAJqYcYD1P2mM",
+      "link": "spotify:artist:6LIcR4928YAJqYcYD1P2mM",
+      "name": "LightSkinKeisha",
+      "popularity": 38
+    },
+    "39": {
+      "confidence": "Low",
+      "genres": ["experimental r&b"],
+      "id": "7ycsWk9ae4pTAlWH8j6Hf9",
+      "link": "spotify:artist:7ycsWk9ae4pTAlWH8j6Hf9",
+      "name": "Matt Martians",
+      "popularity": 39
+    },
+    "40": {
+      "confidence": "Low",
+      "genres": ["pop soul"],
+      "id": "6glcVV5wCi1hU4nxqJItqd",
+      "link": "spotify:artist:6glcVV5wCi1hU4nxqJItqd",
+      "name": "VINCINT",
+      "popularity": 40
+    },
+    "41": {
+      "confidence": "Low",
+      "genres": ["trap queen"],
+      "id": "6x3iaJYt5zLqKIfkrPQme9",
+      "link": "spotify:artist:6x3iaJYt5zLqKIfkrPQme9",
+      "name": "Chinese Kitty",
+      "popularity": 41
+    },
+    "42": {
+      "confidence": "Low",
+      "genres": ["la pop"],
+      "id": "7yVXoYjAE7rrkQ28aGBgUo",
+      "link": "spotify:artist:7yVXoYjAE7rrkQ28aGBgUo",
+      "name": "Malia Civetz",
+      "popularity": 42
+    },
+    "43": {
+      "confidence": "Low",
+      "genres": ["high vibe"],
+      "id": "5u7IvRoGPTFjHhP7iLJdEe",
+      "link": "spotify:artist:5u7IvRoGPTFjHhP7iLJdEe",
+      "name": "Tyla Jane",
+      "popularity": 43
+    },
+    "44": {
+      "confidence": "Low",
+      "genres": ["viral rap"],
+      "id": "1DGAqC29aw0FpJCejAehVk",
+      "link": "spotify:artist:1DGAqC29aw0FpJCejAehVk",
+      "name": "Rubi Rose",
+      "popularity": 44
+    },
+    "45": {
+      "confidence": "Low",
+      "genres": ["alternative r&b"],
+      "id": "2d6ggH1oVt4z2zCuY2u5DW",
+      "link": "spotify:artist:2d6ggH1oVt4z2zCuY2u5DW",
+      "name": "Durand Bernarr",
+      "popularity": 45
+    },
+    "46": {
+      "confidence": "Low",
+      "genres": ["alternative r&b", "indie soul"],
+      "id": "0oBsnAC3fzYkTHF3bkfNx6",
+      "link": "spotify:artist:0oBsnAC3fzYkTHF3bkfNx6",
+      "name": "Phony Ppl",
+      "popularity": 46
+    },
+    "47": {
+      "confidence": "Low",
+      "genres": ["alternative r&b"],
+      "id": "0Ek89uaJyo6NfWK22awFvI",
+      "link": "spotify:artist:0Ek89uaJyo6NfWK22awFvI",
+      "name": "VanJess",
+      "popularity": 47
+    },
+    "48": {
+      "confidence": "Low",
+      "genres": ["cloud rap", "underground hip hop"],
+      "id": "4bbjivSh1oG4NOc7uYHfw5",
+      "link": "spotify:artist:4bbjivSh1oG4NOc7uYHfw5",
+      "name": "Lil B",
+      "popularity": 48
+    },
+    "49": {
+      "confidence": "Low",
+      "genres": [
+        "alternative r&b",
+        "arkansas hip hop",
+        "multidisciplinary",
+        "trap queen"
+      ],
+      "id": "4c2ighP1wj8E5dVGJDCOiB",
+      "link": "spotify:artist:4c2ighP1wj8E5dVGJDCOiB",
+      "name": "Kari Faux",
+      "popularity": 49
+    },
+    "50": {
+      "confidence": "Low",
+      "genres": ["underground hip hop"],
+      "id": "5xpkLC1MxiPRiIJUDEzuVm",
+      "link": "spotify:artist:5xpkLC1MxiPRiIJUDEzuVm",
+      "name": "Odd Future",
+      "popularity": 50
+    },
+    "51": {
+      "confidence": "Low",
+      "genres": [],
+      "id": "6S6u5pS5ywg7rv50rhpobQ",
+      "link": "spotify:artist:6S6u5pS5ywg7rv50rhpobQ",
+      "name": "Maiya The Don",
+      "popularity": 51
+    },
+    "52": {
+      "confidence": "Low",
+      "genres": ["alternative r&b"],
+      "id": "6gj3sMEZYP6IESIptoXnrP",
+      "link": "spotify:artist:6gj3sMEZYP6IESIptoXnrP",
+      "name": "Ambr\u00e9",
+      "popularity": 52
+    },
+    "53": {
+      "confidence": "Low",
+      "genres": ["afrofuturism", "lgbtq+ hip hop"],
+      "id": "07EcmJpfAday8xGkslfanE",
+      "link": "spotify:artist:07EcmJpfAday8xGkslfanE",
+      "name": "Kevin Abstract",
+      "popularity": 53
+    },
+    "54": {
+      "confidence": "Low",
+      "genres": ["alternative hip hop"],
+      "id": "77AKJs9SJqxHXbPgtJPKRa",
+      "link": "spotify:artist:77AKJs9SJqxHXbPgtJPKRa",
+      "name": "King Geedorah",
+      "popularity": 54
+    },
+    "55": {
+      "confidence": "Low",
+      "genres": ["alternative hip hop", "underground hip hop"],
+      "id": "6vHBuUxrcpn1do5UaEJ7g6",
+      "link": "spotify:artist:6vHBuUxrcpn1do5UaEJ7g6",
+      "name": "Domo Genesis",
+      "popularity": 55
+    },
+    "56": {
+      "confidence": "Low",
+      "genres": ["alternative r&b", "indie soul", "nyc pop"],
+      "id": "0tbeZu9lv8YEKSQ9tZSslu",
+      "link": "spotify:artist:0tbeZu9lv8YEKSQ9tZSslu",
+      "name": "Amber Mark",
+      "popularity": 56
+    },
+    "57": {
+      "confidence": "Low",
+      "genres": ["experimental hip hop", "industrial hip hop"],
+      "id": "5RADpgYLOuS2ZxDq7ggYYH",
+      "link": "spotify:artist:5RADpgYLOuS2ZxDq7ggYYH",
+      "name": "Death Grips",
+      "popularity": 57
+    },
+    "58": {
+      "confidence": "Low",
+      "genres": ["alternative r&b", "indie r&b"],
+      "id": "4yJHrytMK7mqtKsXVGaBNg",
+      "link": "spotify:artist:4yJHrytMK7mqtKsXVGaBNg",
+      "name": "Fana Hues",
+      "popularity": 58
+    },
+    "59": {
+      "confidence": "Low",
+      "genres": ["alternative r&b", "lgbtq+ hip hop"],
+      "id": "7GN9PivdemQRKjDt4z5Zv8",
+      "link": "spotify:artist:7GN9PivdemQRKjDt4z5Zv8",
+      "name": "The Internet",
+      "popularity": 59
+    },
+    "60": {
+      "confidence": "Low",
+      "genres": ["alternative hip hop", "boom bap", "drumless hip hop"],
+      "id": "4fpwOzxFRMVGfd197dKIdY",
+      "link": "spotify:artist:4fpwOzxFRMVGfd197dKIdY",
+      "name": "Boldy James",
+      "popularity": 60
+    },
+    "61": {
+      "confidence": "Medium",
+      "genres": ["alternative r&b"],
+      "id": "1vaQ6v3pOFxAIrFoPrAcom",
+      "link": "spotify:artist:1vaQ6v3pOFxAIrFoPrAcom",
+      "name": "Ari Lennox",
+      "popularity": 61
+    },
+    "62": {
+      "confidence": "Low",
+      "genres": ["contemporary r&b", "hip pop", "r&b", "urban contemporary"],
+      "id": "5NDMothbpdpq2xHqSjrrWn",
+      "link": "spotify:artist:5NDMothbpdpq2xHqSjrrWn",
+      "name": "Faith Evans",
+      "popularity": 62
+    },
+    "63": {
+      "confidence": "Low",
+      "genres": [
+        "abstract hip hop",
+        "alternative hip hop",
+        "hip hop",
+        "psychedelic hip hop"
+      ],
+      "id": "2aoFQUeHD1U7pL098lRsDU",
+      "link": "spotify:artist:2aoFQUeHD1U7pL098lRsDU",
+      "name": "Madvillain",
+      "popularity": 63
+    },
+    "64": {
+      "confidence": "Low",
+      "genres": ["boy band", "rap"],
+      "id": "1Bl6wpkWCQ4KVgnASpvzzA",
+      "link": "spotify:artist:1Bl6wpkWCQ4KVgnASpvzzA",
+      "name": "BROCKHAMPTON",
+      "popularity": 64
+    },
+    "65": {
+      "confidence": "Low",
+      "genres": [
+        "hip hop",
+        "indie hip hop",
+        "rap",
+        "tennessee hip hop",
+        "underground hip hop"
+      ],
+      "id": "6aaMZ3fcfLv4tEbmY7bjRM",
+      "link": "spotify:artist:6aaMZ3fcfLv4tEbmY7bjRM",
+      "name": "Isaiah Rashad",
+      "popularity": 65
+    },
+    "66": {
+      "confidence": "Medium",
+      "genres": ["pop dance", "uk dance"],
+      "id": "2gduEC76ry33RVurAvT05p",
+      "link": "spotify:artist:2gduEC76ry33RVurAvT05p",
+      "name": "Nathan Dawe",
+      "popularity": 66
+    },
+    "67": {
+      "confidence": "Low",
+      "genres": [
+        "drumless hip hop",
+        "experimental hip hop",
+        "hip hop",
+        "rap",
+        "underground hip hop"
+      ],
+      "id": "3A5tHz1SfngyOZM2gItYKu",
+      "link": "spotify:artist:3A5tHz1SfngyOZM2gItYKu",
+      "name": "Earl Sweatshirt",
+      "popularity": 67
+    },
+    "68": {
+      "confidence": "Low",
+      "genres": ["cali rap", "trap queen"],
+      "id": "6cK3NBO6uP7hh0oyuVELFl",
+      "link": "spotify:artist:6cK3NBO6uP7hh0oyuVELFl",
+      "name": "Saweetie",
+      "popularity": 68
+    },
+    "69": {
+      "confidence": "Low",
+      "genres": [
+        "dark trap",
+        "drill",
+        "hip hop",
+        "miami hip hop",
+        "rap",
+        "trap",
+        "underground hip hop"
+      ],
+      "id": "6fxyWrfmjcbj5d12gXeiNV",
+      "link": "spotify:artist:6fxyWrfmjcbj5d12gXeiNV",
+      "name": "Denzel Curry",
+      "popularity": 69
+    },
+    "70": {
+      "confidence": "Medium",
+      "genres": ["alt z", "boston folk", "indie pop"],
+      "id": "1GmsPCcpKgF9OhlNXjOsbS",
+      "link": "spotify:artist:1GmsPCcpKgF9OhlNXjOsbS",
+      "name": "Lizzy McAlpine",
+      "popularity": 70
+    },
+    "71": {
+      "confidence": "Low",
+      "genres": ["conscious hip hop", "hip hop", "rap"],
+      "id": "2P5sC9cVZDToPxyomzF1UH",
+      "link": "spotify:artist:2P5sC9cVZDToPxyomzF1UH",
+      "name": "Joey Bada$$",
+      "popularity": 71
+    },
+    "72": {
+      "confidence": "Low",
+      "genres": ["pop soul"],
+      "id": "3hv9jJF3adDNsBSIQDqcjp",
+      "link": "spotify:artist:3hv9jJF3adDNsBSIQDqcjp",
+      "name": "Mark Ronson",
+      "popularity": 72
+    },
+    "73": {
+      "confidence": "Low",
+      "genres": [
+        "alternative hip hop",
+        "east coast hip hop",
+        "hip hop",
+        "instrumental hip hop"
+      ],
+      "id": "2pAWfrd7WFF3XhVt9GooDL",
+      "link": "spotify:artist:2pAWfrd7WFF3XhVt9GooDL",
+      "name": "MF DOOM",
+      "popularity": 73
+    },
+    "74": {
+      "confidence": "Low",
+      "genres": ["pop", "scandipop", "swedish electropop", "swedish pop"],
+      "id": "1Xylc3o4UrD53lo9CvFvVg",
+      "link": "spotify:artist:1Xylc3o4UrD53lo9CvFvVg",
+      "name": "Zara Larsson",
+      "popularity": 74
+    },
+    "75": {
+      "confidence": "Low",
+      "genres": ["trap queen"],
+      "id": "3MdXrJWsbVzdn6fe5JYkSQ",
+      "link": "spotify:artist:3MdXrJWsbVzdn6fe5JYkSQ",
+      "name": "Latto",
+      "popularity": 75
+    },
+    "76": {
+      "confidence": "Low",
+      "genres": ["atl hip hop", "hip hop", "rap"],
+      "id": "73sIBHcqh3Z3NyqHKZ7FOL",
+      "link": "spotify:artist:73sIBHcqh3Z3NyqHKZ7FOL",
+      "name": "Childish Gambino",
+      "popularity": 76
+    },
+    "77": {
+      "confidence": "Low",
+      "genres": ["r&b"],
+      "id": "360IAlyVv4PCEVjgyMZrxK",
+      "link": "spotify:artist:360IAlyVv4PCEVjgyMZrxK",
+      "name": "Miguel",
+      "popularity": 77
+    },
+    "78": {
+      "confidence": "Low",
+      "genres": ["pop", "rap"],
+      "id": "4kYSro6naA4h99UJvo89HB",
+      "link": "spotify:artist:4kYSro6naA4h99UJvo89HB",
+      "name": "Cardi B",
+      "popularity": 78
+    },
+    "79": {
+      "confidence": "Medium",
+      "genres": ["indietronica", "metropopolis", "pop", "uk pop"],
+      "id": "0X2BH1fck6amBIoJhDVmmJ",
+      "link": "spotify:artist:0X2BH1fck6amBIoJhDVmmJ",
+      "name": "Ellie Goulding",
+      "popularity": 79
+    },
+    "80": {
+      "confidence": "Medium",
+      "genres": ["alt z", "electropop", "pop"],
+      "id": "63yrD80RY3RNEM2YDpUpO8",
+      "link": "spotify:artist:63yrD80RY3RNEM2YDpUpO8",
+      "name": "Melanie Martinez",
+      "popularity": 80
+    },
+    "81": {
+      "confidence": "Low",
+      "genres": ["hip hop", "pittsburgh rap", "rap"],
+      "id": "4LLpKhyESsyAXpc4laK94U",
+      "link": "spotify:artist:4LLpKhyESsyAXpc4laK94U",
+      "name": "Mac Miller",
+      "popularity": 81
+    },
+    "82": {
+      "confidence": "Medium",
+      "genres": ["pop"],
+      "id": "6jJ0s89eD6GaHleKKya26X",
+      "link": "spotify:artist:6jJ0s89eD6GaHleKKya26X",
+      "name": "Katy Perry",
+      "popularity": 82
+    },
+    "83": {
+      "confidence": "Low",
+      "genres": ["boy band", "pop", "post-teen pop", "talent show"],
+      "id": "4AK6F7OLvEQ5QYCBNiQWHq",
+      "link": "spotify:artist:4AK6F7OLvEQ5QYCBNiQWHq",
+      "name": "One Direction",
+      "popularity": 83
+    },
+    "84": {
+      "confidence": "Low",
+      "genres": ["hip hop", "rap"],
+      "id": "4V8LLVI7PbaPR0K2TGSxFF",
+      "link": "spotify:artist:4V8LLVI7PbaPR0K2TGSxFF",
+      "name": "Tyler, The Creator",
+      "popularity": 84
+    },
+    "85": {
+      "confidence": "Low",
+      "genres": ["hip pop", "pop", "queens hip hop", "rap"],
+      "id": "0hCNtLu0JehylgoiP8L4Gh",
+      "link": "spotify:artist:0hCNtLu0JehylgoiP8L4Gh",
+      "name": "Nicki Minaj",
+      "popularity": 85
+    },
+    "86": {
+      "confidence": "Low",
+      "genres": ["pop"],
+      "id": "66CXWjxzNUsdJxJ2JdwvnR",
+      "link": "spotify:artist:66CXWjxzNUsdJxJ2JdwvnR",
+      "name": "Ariana Grande",
+      "popularity": 86
+    },
+    "87": {
+      "confidence": "Low",
+      "genres": ["conscious hip hop", "hip hop", "rap", "west coast rap"],
+      "id": "2YZyLoL8N0Wb9xBt1NhZWg",
+      "link": "spotify:artist:2YZyLoL8N0Wb9xBt1NhZWg",
+      "name": "Kendrick Lamar",
+      "popularity": 87
+    }
+  }
+}
