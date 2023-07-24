@@ -63,6 +63,7 @@ app.use(express.static(__dirname + '/public'))
 
 //<---------------------------- ROUTING ---------------------------->
 app.get('/login', (req, res) => {
+  console.log("login initiated")
   res.redirect(spotifyApi.createAuthorizeURL(scopes));
 });
 
@@ -220,27 +221,19 @@ app.get('/', (req, res) => {
 });
 
 app.get('/you', async (req, res) => {
+  console.log("you.html")
   const https = require('https');
+  username = await getMe.getMyData(access_token);
+  const interest_http = 'http://127.0.0.1:5000/get_you?token=' + access_token;
+  const response = await fetch(interest_http);
+  const interest_json = await response.json();
+  console.log(interest_json);
+  console.log('complete');
 
-  // username = await getMe.getMyData(access_token);
-  // userTop = await getMe.getUserTop();
-  // topArtist = await userTop.topArtists;
-  // topGenre = await userTop.genresFreq;
-  // images = await userTop.images;
-  // topSongs = await userTop.topSongs;
-  // artistRelated = await userTop.artistRelated;
-  // artistInfo = await userTop.artistInfo;
-  // console.log(artistInfo);
-  // console.log("-----")
-  // console.log(artistRelated);
-  // console.log("-----")
-  // console.log(topSongs);
 
-  //reformatting for display 
-  // let artistI = {}
-  // for (let i = 0; i < topArtist.length; i++) {
-  //   artistI[i + 1] = ({ 'image': images[i], 'artist': topArtist[i] });
-  // }
+  res.render('you_2', {
+    title: "You - E-AI",
+  });
 
   // res.render('you', {
   //   title: "E-AI",
@@ -259,11 +252,15 @@ app.get('/you', async (req, res) => {
 
 app.get('/recommendations',  async (req, res) => {
   
-    const recs = 'http://127.0.0.1:5000/recs?token=' + access_token; //add acces token as ?= thing 
-    console.log(recs)
-    const response = await fetch(recs);
-    const json = await response.json();
-    console.log(json)
+  const recs = 'http://127.0.0.1:5000/recs?token=' + access_token; //add acces token as ?= thing 
+  // console.log(recs)
+  const response = await fetch(recs);
+  const json = await response.json();
+  console.log(json)
+  
+  //display info using longtail idea 
+
+  
 
 })
 
@@ -288,29 +285,31 @@ app.get('/callback', (req, res) => {
       spotifyApi.setAccessToken(access_token);
       spotifyApi.setRefreshToken(refresh_token);
 
-      console.log('access_token:', access_token);
-      console.log('refresh_token:', refresh_token);
+      // console.log('access_token:', access_token);
+      // console.log('refresh_token:', refresh_token);
 
       // console.log(
       //   `Sucessfully retreived access token. Expires in ${expires_in} s.`
       // );
       res.redirect('/you');
+      // res.redirect('/you');
       // console.log("success");
 
 
-      setInterval(async () => {
-        const data = await spotifyApi.refreshAccessToken();
-        access_token = data.body['access_token'];
+      // setInterval(async () => {
+      //   const data = await spotifyApi.refreshAccessToken();
+      //   access_token = data.body['access_token'];
 
-        console.log('The access token has been refreshed!');
-        console.log('access_token:', access_token);
-        spotifyApi.setAccessToken(access_token);
-      }, expires_in / 2 * 1000);
+      //   console.log('The access token has been refreshed!');
+      //   console.log('access_token:', access_token);
+      //   spotifyApi.setAccessToken(access_token);
+      // }, expires_in / 2 * 1000);
     })
     .catch(error => {
       console.error('Error getting Tokens:', error);
       res.send(`Error getting Tokens: ${error}`);
     });
+  
 });
 
 app.get('/refresh_token', function (req, res) {
