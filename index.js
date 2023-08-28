@@ -257,10 +257,13 @@ app.get('/recommendations',  async (req, res) => {
   const response = await fetch(recs);
   const json = await response.json();
   console.log(json)
+  console.log("json")
   
   //display info using longtail idea 
 
-  
+  res.render('you_3', {
+    title: "You - E-AI",
+  });
 
 })
 
